@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Contact Us | Askify";
+    var current_user = (Askify.Models.User)Session["session_surrent_user"];
+}
+
+<div class="top_mrgn">
+	<div class="page-header">
+      <h1>Contact Us <small>Help us to improve</small></h1>
+    </div>
+</div>
+
+<div>
+	<div class="row top_mrgn_in">
+      <div class="col-xs-12 col-md-8">
+          <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Name</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Message</label>
+                <textarea class="form-control" rows="3"></textarea>              
+              </div>
+              <button type="submit" class="btn btn-warning">Submit</button>
+            </form>
+
+
+      </div>
+      <div class="col-xs-6 col-md-4">
+          <div class="address_box">
+            <address>
+                <strong>Gioco Studio</strong><br>
+                Johar Town, Lahore<br>
+                Pakistan.<br>
+                <abbr title="Phone">P:</abbr> (0092) 321 417 0605 
+            </address>
+
+            <address>
+                <strong>Aamish Baloch</strong><br>
+                <a href="mailto:#">aamish.baloch@gmail.com</a>
+            </address>
+          </div>
+      </div>
+    </div>
+</div>
+
+

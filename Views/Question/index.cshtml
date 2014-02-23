@@ -1,0 +1,34 @@
+﻿@model List<Askify.Models.Question>
+@{
+    ViewBag.Title = "Search | Askify";
+    var current_user = (Askify.Models.User)Session["session_current_user"];
+}
+
+<div class="top_mrgn">
+    <div class="row">
+      <div class="col-md-10">
+          <div class="page-header">
+            <h1>Search  <small>Results</small></h1>    
+          </div>
+      </div>
+      <div class="col-md-2 btn-adj">
+          <button class="btn btn-warning pull-right" onclick="sort('@ViewBag.keyword');">Sort by Answers Count</button>
+      </div>
+    </div>
+</div>
+
+<div id="main_section">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div id="searched_results">
+                @foreach (var f in Model){
+                    <blockquote>
+                        <a href="~/question/show/@f.Id"><p>@f.text</p></a>
+                    </blockquote>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

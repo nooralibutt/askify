@@ -1,0 +1,64 @@
+﻿@model Askify.Models.User
+@{
+    ViewBag.Title = @Model.first_name + " | Askify";
+}
+
+<div class="top_mrgn">
+	<div class="page-header">
+      <h1>@Model.first_name @Model.last_name <small></small></h1>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4 col-md-2">
+      @{
+          if(@Model.image == null)
+          {
+            <img class="thumbnail" src="~/Files/no-user.png" />
+          }
+          else
+          {
+            <img class="thumbnail" src="~/Files/@Model.image" />
+          }
+      }
+    <address>
+      <strong>@Model.first_name @Model.last_name</strong><br>
+      @Model.email<br>
+      User Since: @Model.created_at
+    </address>
+      <hr />
+    <address>
+        <strong>Askify Status</strong><br>
+        Question Posted: @Model.Questions.Count<br>
+        Answers: @Model.Answers.Count<br>
+    </address>
+  </div>
+  <div class="col-xs-14 col-md-10">
+    <div class="well">
+        Top Rated Questions
+    </div>
+      <hr />
+        @foreach (var f in Model.Questions)
+        {
+            <div class="question_section">
+                    <a href="~/question/show/@f.Id">
+                        <p class="question_text">
+                            @if (f.text.Length > 200)
+                            {
+                                @f.text.Substring(0,200);
+                                <em>...</em>
+                            }else{
+                                @f.text;
+                            }
+                        </p>
+                    </a>
+                    <small>Tags: 
+                        @foreach(var ff in f.Tags){
+                                <span class="label label-warning">@ff.tag1</span>
+                           }
+                    </small>
+            </div>
+            <hr />
+        }
+  </div>
+</div>

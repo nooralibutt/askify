@@ -1,0 +1,114 @@
+﻿@model Askify.Models.Question
+@{
+    ViewBag.Title = "Home | Askify";
+    var current_user = (Askify.Models.User)Session["session_current_user"];
+}
+
+<div class="top_mrgn">
+	<div class="page-header">
+      <h1>Welcome <small>@current_user.first_name @current_user.last_name</small></h1>
+    </div>
+</div>
+
+<div id="main_section">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div id="editable_section">
+                <form action="~/question/create" method="post" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.TextAreaFor(m => m.text, new { @class="form-control", @placeholder="Enter your question"})
+                            @Html.ValidationMessageFor(m=>m.text)
+                        </div>            
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 my-col-sm-10">
+                            <input type="text" class="form-control" name="tags" placeholder="Enter the # tags here">
+                        </div>
+                        <div class="col-sm-2 my-col-sm-2">
+                            <button type="submit" class="pull-right btn btn-warning">Askify</button>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <div class="well mywell">
+                Account Options:
+                <a href="~/user/profile/@current_user.Id" class="btn btn-warning btn-sm">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+                <a href="~/user/setting/@current_user.Id" class="btn btn-warning btn-sm">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a> 
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="well">
+                Top Rated Questions
+            </div>
+            <hr />
+            @foreach (var f in current_user.get_questions_feed())
+            {
+                <div class="question_section">
+                        <a href="~/question/show/@f.Id">
+                            <p class="question_text">
+                                @if (f.text.Length > 200)
+                                {
+                                    @f.text.Substring(0,200);
+                                    <em>...</em>
+                                }else{
+                                    @f.text;
+                                }
+                            </p>
+                        </a>
+                        <small>Question by: <a href="~/user/profile/@f.User.Id"> @f.User.first_name @f.User.last_name</a></small>
+                </div>
+                <hr />
+            }
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Askify Status
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      <address>
+                            <strong>@current_user.first_name @current_user.last_name</strong><br>
+                            Question Posted: @current_user.Questions.Count<br>
+                            Answers: @current_user.Answers.Count<br>
+                        </address>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      User Information
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                  <div class="panel-body">
+                      <address>
+                        <strong>@current_user.first_name @current_user.last_name</strong><br>
+                        <a href="mailto:#">@current_user.email</a>
+                      </address>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model Askify.Models.User
+<div class="modal fade" id="reg_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="reg_modal_label">Register to Askify</h4>
+      </div>
+      <div class="modal-body">
+        <form action="~/User/register" method="post" class="form-horizontal" role="form" autocomplete="off" enctype="multipart/form-data">
+          <div class="form-group">
+                <label class="col-sm-4 control-label" for="fname">Firstname</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m=>m.first_name, new { @class="form-control", @placeholder="Fisrt Name"})
+                @Html.ValidationMessageFor(m=>m.first_name)
+            </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-4 control-label" for="lname">Lastname</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m=>m.last_name, new { @class="form-control", @placeholder="Last Name"})
+                @Html.ValidationMessageFor(m=>m.last_name)
+            </div>
+          </div>
+            <hr />
+          <div class="form-group">
+                <label class="col-sm-4 control-label" for="email">Email</label>
+            <div class="col-sm-6">
+                <input class="form-control valid" data-val="true" data-val-required="The email field is required." id="check_email" name="email" placeholder="Email" type="email" value="">
+                @Html.ValidationMessageFor(m=>m.email)
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <div class="col-sm-6">
+                    <button id="email_confirm_check" class="btn btn-warning">Check email availability</button>
+                </div>
+                <div id="email_confirm_result" class="col-sm-2">
+                    
+                </div>
+            </div>
+          </div>
+            <hr />
+          <div class="form-group">
+                <label class="col-sm-4 control-label" for="password">Password</label>
+            <div class="col-sm-6">
+                @Html.PasswordFor(m=>m.password, new { @class="form-control", @id="password01", @placeholder="Password"})
+                @Html.ValidationMessageFor(m=>m.password)
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cpassword" class="col-sm-4 control-label">Confirm Password</label>
+            <div class="col-sm-6">
+                @Html.PasswordFor(m=>m.password, new { @class="form-control", @id="password02", @placeholder="Confirm Password"})
+                @Html.ValidationMessageFor(m=>m.password)
+            </div>
+          </div>
+          <div id="pass_check" class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+              <p>Password confirmation failed</p>
+            </div>
+          </div>
+            <hr />
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-4">
+              Upload Image: <input type="file" name="image" />
+            </div>
+          </div>
+            <hr />
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+              <button type="submit" id="signup" class="btn btn-warning">Sign up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

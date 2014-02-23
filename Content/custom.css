@@ -1,0 +1,88 @@
+﻿.top_mrgn{
+    margin-top: 80px !important;
+}
+
+.top_mrgn_in{
+    margin-top: 50px !important;
+}
+
+.address_box{
+    text-align: right;
+    padding-top: 60px;
+}
+
+.round_pic{
+    text-align: center;
+}
+
+.adjst_height{
+    min-height: 550px;
+}
+
+.uper_txt{
+    padding-top: 12px;
+}
+
+.logo_nav
+{
+  background: url(images/logo.png) no-repeat left center;
+  height: 20px;
+  width: 100px;
+}
+
+.align_cntr{
+    text-align: center;
+}
+
+.field_custm{
+    width: 122% !important;
+}
+
+.question_text
+{
+    color: #F59111; 
+}
+
+.question_section
+{
+    word-wrap: break-word;
+    color: #88847F;
+    font-weight: bold;
+}
+
+.answer_section
+{
+    word-wrap: break-word;
+    color: #686460;
+    font-weight: normal !important;
+}
+
+.no_weight
+{
+    font-weight: normal !important;
+}
+
+.display_image
+{
+    margin-left: 25%;
+}
+
+.mywell
+{
+    padding: 12.5% !important;
+}
+
+.my-col-sm-10
+{
+    width: 91.333333% !important;
+}
+
+.my-col-sm-2
+{
+    width: 8.666667% !important;
+}
+
+.btn-adj
+{
+    padding-top: 4%;
+}
